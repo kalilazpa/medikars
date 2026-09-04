@@ -13,6 +13,7 @@ class PasienController extends Controller
     public function index()
     {
         $pasiens = Pasien::all();
+
         return view('pages.pasien.index', compact('pasiens'));
     }
 
@@ -48,8 +49,8 @@ class PasienController extends Controller
         ]);
 
         return redirect()
-        ->route('admin.pasien.index')
-        ->with('success', 'Data pasien berhasil ditambahkan.');
+            ->route('admin.pasien.index')
+            ->with('success', 'Data pasien berhasil ditambahkan.');
     }
 
     /**
@@ -57,7 +58,7 @@ class PasienController extends Controller
      */
     public function show(string $id)
     {
-        $pasien = Pasien::findOrFail(decrypt($id));
+        $pasien = Pasien::findOrFail($id);
 
         return view('pages.pasien.show', compact('pasien'));
     }
@@ -67,7 +68,7 @@ class PasienController extends Controller
      */
     public function edit(string $id)
     {
-         $pasien = Pasien::findOrFail(decrypt($id));
+        $pasien = Pasien::findOrFail($id);
 
         return view('pages.pasien.edit', compact('pasien'));
     }
@@ -77,7 +78,7 @@ class PasienController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       $pasien = Pasien::findOrFail(decrypt($id));
+        $pasien = Pasien::findOrFail($id);
 
         $request->validate([
             'nama' => 'required|string|max:255',
@@ -107,7 +108,7 @@ class PasienController extends Controller
      */
     public function destroy(string $id)
     {
-        $pasien = Pasien::findOrFail(decrypt($id));
+        $pasien = Pasien::findOrFail($id);
 
         $pasien->delete();
 
