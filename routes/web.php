@@ -43,10 +43,3 @@ Route::group([
 
     Route::resource('/pendaftaran', App\Http\Controllers\PendaftaranController::class);
 });
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
